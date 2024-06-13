@@ -1,38 +1,38 @@
 const videosList = [
 {
-	video: 'images/vid-9.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-9.mp4',
 	title: '3D helicopter animation'
 },
 {
-	video: 'images/vid-3.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-3.mp4',
 	title: 'emoji falling animation'
 },
 {
-	video: 'images/vid-1.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-1.mp4',
 	title: 'house flood animation'
 },
 {
-	video: 'images/vid-2.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-2.mp4',
 	title: 'zoombie walking animation'
 },
 {
-	video: 'images/vid-4.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-4.mp4',
 	title: '3D town animation'
 },
 {
-	video: 'images/vid-5.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-5.mp4',
 	title: 'man chasing carrot animation'
 },
 {
-	video: 'images/vid-6.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-6.mp4',
 	title: 'door hinge animation'
 },
 {
-	video: 'images/vid-7.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-7.mp4',
 	title: 'poeple walking in town animation'
 },
 {
-	video: 'images/vid-8.mp4',
+	video: 'https://cdn.theoplayer.com/demos/iframe/theoplayer.html?autoplay=false&muted=false&preload=none&src=images/vid-8.mp4',
 	title: 'knight chasing virus animation'
 },
 ]
