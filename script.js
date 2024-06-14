@@ -1,4 +1,4 @@
-const main_video = document.querySelector('.main-video video');
+const main_video = document.querySelector('.main-video iframe');
 const main_video_title = document.querySelector('.main-video .title');
 const video_playlist = document.querySelector('.video-playlist .videos');
 
@@ -61,7 +61,7 @@ data.forEach((video, i) => {
     video_playlist.innerHTML += video_element;
 })
 
-let videos = document.querySelectorAll('.video');
+let videos = document.querySelectorAll('.iframe');
 videos[0].classList.add('active');
 videos[0].querySelector('img').src = 'images/pause.svg';
 
@@ -78,7 +78,7 @@ videos.forEach(selected_video => {
         selected_video.querySelector('img').src = 'images/pause.svg';
 
         let match_video = data.find(video => video.id == selected_video.dataset.id);
-        main_video.src = 'video/' + match_video.name;
+        main_video.src = 'iframe/' + match_video.name;
         main_video_title.innerHTML = match_video.title;
     }
 });
