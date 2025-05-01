@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VideoPlayer</title>
+  <link rel="stylesheet" href="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      height: 100%;
+      width: 100%;
+    }
+    #video-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+    }
+
+    .watermark-icon-text {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      opacity: 0.85;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    .watermark-icon-text img {
+      height: 18px;
+      width: 18px;
+    }
+
+    .watermark-icon-text span {
+      color: #fff;
+      font-size: 12px;
+      font-family: sans-serif;
+      font-weight: 600;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-1px); }
+      100% { transform: translateY(0); }
+    }
+
+    #watermark-left {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 14px;
+      font-family: sans-serif;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="video-container">
+    <video id="video-player" controls></video>
+    <div id="watermark-left">Watermark</div>
+    <div id="watermark-right" class="watermark-icon-text">
+      <img src="icon.png" alt="Icon" />
+      <span>VidBoster+</span>
+    </div>
+  </div>
+
+  <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+  <script>
+    if (window.SecureBridge) {
+      window.SecureBridge.enableSecureFlag();
+      if (window.SecureBridge.isDeviceTampered()) {
+          document.body.innerHTML = "<h1>Environment Not Secure</h1>";
+      }
+    }
+
+    const player = fluidPlayer("video-player", {
+      layoutControls: {
+        fillToContainer: true,
+        autoPlay: true,
+        playbackRateEnabled: true
+      }
+    });
+
+    function setVideoUrl(url) {
+      const video = document.getElementById('video-player');
+      video.src = url;
+      video.load();
+      video.play();
+    }
+
+    function setVideoTitle(title) {
+      document.title = title;
+    }
+
+    function setVideoLabel(label) {
+      const left = document.getElementById("watermark-left");
+      left.textContent = label;
+      left.style.display = "block";
+    }
+  </script>
+</body>
+</html>
