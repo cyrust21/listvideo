@@ -3,5 +3,5 @@
   "versionCode": 5,
   "url": "https://example.com/app-release.apk",
   "changelog": "Perbaikan bug dan peningkatan performa.",
-  "mandatory": false
+  "mandatory": true
 }
