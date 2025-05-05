@@ -5,20 +5,23 @@
   <title>Daftar Video</title>
   <style>
     body {
-      background: #111;
-      color: #eee;
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      background: #121212;
+      color: #f1f1f1;
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+    h1 {
+      color: #00ccff;
     }
     ul {
+      padding: 0;
       list-style: none;
-      padding-left: 0;
     }
     li {
       margin-bottom: 10px;
     }
     a {
-      color: #00aced;
+      color: #00ccff;
       text-decoration: none;
     }
     a:hover {
@@ -27,36 +30,37 @@
   </style>
 </head>
 <body>
-  <h1>Daftar Video (Posisi 10, 20, 30, ...)</h1>
-  <ul id="video-list">Memuat...</ul>
+  <h1>Link Video (Setiap Posisi ke-10)</h1>
+  <ul id="video-list">Sedang memuat...</ul>
 
   <script>
-    const listEl = document.getElementById('video-list');
+    const url = 'https://cyrust21.github.io/listvideo/video.json';
+    const container = document.getElementById('video-list');
 
-    fetch('https://cyrust21.github.io/listvideo/video.json')
-      .then(response => response.json())
+    fetch(url)
+      .then(res => res.json())
       .then(data => {
-        const videoIds = data.video_ids;
-        const selectedIds = [];
+        const ids = data.video_ids || [];
+        container.innerHTML = '';
 
-        for (let i = 9; i < Math.min(videoIds.length, 570); i += 10) {
-          selectedIds.push(videoIds[i]);
+        for (let i = 9; i < Math.min(ids.length, 570); i += 10) {
+          const id = ids[i];
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = `https://trenvideotoday.blogspot.com/?id=${id}`;
+          link.textContent = `https://trenvideotoday.blogspot.com/?id=${id}`;
+          link.target = '_blank';
+          li.appendChild(link);
+          container.appendChild(li);
         }
 
-        listEl.innerHTML = ''; // Kosongkan placeholder
-        selectedIds.forEach(id => {
-          const li = document.createElement('li');
-          const a = document.createElement('a');
-          a.href = `https://trenvideotoday.blogspot.com/?id=${id}`;
-          a.textContent = id;
-          a.target = "_blank";
-          li.appendChild(a);
-          listEl.appendChild(li);
-        });
+        if (container.innerHTML === '') {
+          container.innerHTML = '<li>Tidak ada video tersedia.</li>';
+        }
       })
-      .catch(err => {
-        listEl.innerHTML = '<li>Gagal memuat data.</li>';
-        console.error(err);
+      .catch(error => {
+        console.error('Gagal mengambil data:', error);
+        container.innerHTML = '<li>Gagal memuat data.</li>';
       });
   </script>
 </body>
