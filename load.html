@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Video</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #00aced;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daftar Video (Posisi 10, 20, 30, ...)</h1>
+  <ul id="video-list">Memuat...</ul>
+
+  <script>
+    const listEl = document.getElementById('video-list');
+
+    fetch('https://cyrust21.github.io/listvideo/video.json')
+      .then(response => response.json())
+      .then(data => {
+        const videoIds = data.video_ids;
+        const selectedIds = [];
+
+        for (let i = 9; i < Math.min(videoIds.length, 570); i += 10) {
+          selectedIds.push(videoIds[i]);
+        }
+
+        listEl.innerHTML = ''; // Kosongkan placeholder
+        selectedIds.forEach(id => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `https://trenvideotoday.blogspot.com/?id=${id}`;
+          a.textContent = id;
+          a.target = "_blank";
+          li.appendChild(a);
+          listEl.appendChild(li);
+        });
+      })
+      .catch(err => {
+        listEl.innerHTML = '<li>Gagal memuat data.</li>';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
